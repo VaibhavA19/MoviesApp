@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.itcontroller.movies.activities.ParticualrMovieActivity">
+
+        <ImageView
+            android:id="@+id/particular_moviePoster"
+            android:layout_width="170dp"
+            android:layout_height="190dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/particular_moviePoster"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/particular_movie_tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Movie Title"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/heartt" />
+
+                <TextView
+                    android:id="@+id/particular_tvMoviePopularity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="00%"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/particular_movie_tvVoteCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="000 votes"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/particular_tvMovieRuntime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="000 min"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/particular_movie_tvRelease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="DD/MM/YY"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/particular_movie_tvGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="4dp"
+                android:text="abc , ghi , dcsi"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Spoken Languages:"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/particular_movie_tvspokenLangs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Hindi"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/expandView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/particular_moviePoster"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/particular_movie_tvOverview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/cardview_shadow_start_color"
+                android:maxLines="2"
+                android:text="Over View\n of some \n Movie"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/particular_movieSeemore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/particular_movie_tvOverview"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="See more"
+                android:textColor="@android:color/holo_blue_light" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/expandView">
+
+            <ProgressBar
+                android:id="@+id/similar_movie_pb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/particular_movie_rvSimilar_movies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/expandView"
+                android:layout_margin="15dp"
+                android:orientation="horizontal"></android.support.v7.widget.RecyclerView>
+        </FrameLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/linearLayout2"
+            android:layout_marginBottom="17dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginStart="52dp" />
+    </RelativeLayout>
+</ScrollView>
