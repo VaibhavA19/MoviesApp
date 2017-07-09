@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import com.example.itcontroller.movies.APIs.API
 import com.example.itcontroller.movies.R
+import com.example.itcontroller.movies.StringUtils
 import com.example.itcontroller.movies.adapters.MovieAdapter
 import com.example.itcontroller.movies.interfaces.OnItemClickListener
 import com.example.itcontroller.movies.models.Movie
@@ -23,10 +24,10 @@ class MoviesViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies_view)
 
-        movie_pb.visibility   = View.VISIBLE
+        movie_pb.visibility = View.VISIBLE
 
         movies_view_rv.layoutManager = LinearLayoutManager(this)
-        val movieAdapter : MovieAdapter =  MovieAdapter(arrayOf<Movie>(), movie_pb)
+        val movieAdapter: MovieAdapter = MovieAdapter(arrayOf<Movie>(), movie_pb)
         movieAdapter.setOnItemClickListener(OnItemClickListener { itemId, itemView ->
             val i: Intent = Intent(this@MoviesViewActivity, ParticualrMovieActivity::class.java)
             i.putExtra("movieId", itemId)
@@ -34,17 +35,26 @@ class MoviesViewActivity : AppCompatActivity() {
         })
         movies_view_rv.adapter = movieAdapter
 
-        API.getAPIinstance().nowPlayingAPI.nowPlaying.enqueue(object : Callback<MovieResult?> {
-            override fun onResponse(call: Call<MovieResult?>?, response: Response<MovieResult?>?) {
-                    movieAdapter.updateMovieList(response!!.body()!!.results)
-            }
+        var MOVIE_TYPE: String = intent.getStringExtra(StringUtils.MOVIE_VIEW_TYPE)
 
+        val cBObject: Callback<MovieResult?> = object : Callback<MovieResult?> {
+            override fun onResponse(call: Call<MovieResult?>?, response: Response<MovieResult?>?) {
+                movieAdapter.updateMovieList(response!!.body()!!.results)
+            }
             override fun onFailure(call: Call<MovieResult?>?, t: Throwable?) {
                 Log.d("aaa", "Download Failed")
-                Log.d("aaa", "+++++++++++++++++++++++++++++++++++++++++++++")
-                Log.d("aaa", "+++++++++++++++++++++++++++++++++++++++++++++")
             }
-        })
+        }
 
+        when (MOVIE_TYPE) {
+            StringUtils.NOW_PLAYING ->
+                API.getAPIinstance().nowPlayingAPI.nowPlaying.enqueue(cBObject)
+            StringUtils.POPULAR ->
+                API.getAPIinstance().popularMovieAPI.popularMovies.enqueue(cBObject)
+            StringUtils.TOP_RATED ->
+                API.getAPIinstance().topRatedAPI.topRated.enqueue(cBObject)
+            StringUtils.UP_COMING ->
+                API.getAPIinstance().upComingAPI.upComing.enqueue(cBObject)
+        }
     }
 }

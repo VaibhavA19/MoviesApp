@@ -23,7 +23,7 @@ import retrofit2.Response
 class ParticualrMovieActivity : AppCompatActivity() {
 
     var isSeeMoreClicked: Boolean = false
-
+    var downloadedParticularMovie :Movie? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_particualr_movie)
@@ -34,7 +34,7 @@ class ParticualrMovieActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<Movie?>?, response: Response<Movie?>?) {
-                bindView(response!!.body()!!)
+                downloadedParticularMovie = response!!.body()!!
             }
         })
         ///////////////////////////////////Similar Movies/////////////////////////////////////
@@ -51,6 +51,7 @@ class ParticualrMovieActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<MovieResult?>?, response: Response<MovieResult?>?) {
                 similarMovieAdapter.update(response!!.body()!!.results)
+                bindView(downloadedParticularMovie!!)
             }
         })
         /////////////////////////////////////////////////////////////////////////////////////////
