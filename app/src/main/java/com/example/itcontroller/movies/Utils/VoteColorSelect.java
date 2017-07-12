@@ -1,4 +1,4 @@
-package com.example.itcontroller.movies;
+package com.example.itcontroller.movies.Utils;
 
 import android.graphics.Color;
 

@@ -18,6 +18,8 @@ public class API {
     private UpComingAPI upComingAPI;
     private ParticularMoveAPI particularMoveAPI;
     private SimilarMovieAPI similarMovieAPI;
+    private DiscoverMoviesAPI discoverMoviesAPI;
+    private GenreListAPI genreListAPI;
 
     private API() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -30,6 +32,8 @@ public class API {
         upComingAPI = retrofit.create(UpComingAPI.class);
         particularMoveAPI = retrofit.create(ParticularMoveAPI.class);
         similarMovieAPI = retrofit.create(SimilarMovieAPI.class);
+        discoverMoviesAPI = retrofit.create(DiscoverMoviesAPI.class);
+        genreListAPI = retrofit.create(GenreListAPI.class);
     }
 
     public static API getAPIinstance() {
@@ -64,5 +68,13 @@ public class API {
 
     public SimilarMovieAPI getSimilarMovieAPI() {
         return similarMovieAPI;
+    }
+
+    public DiscoverMoviesAPI getDiscoverMoviesAPI() {
+        return discoverMoviesAPI;
+    }
+
+    public GenreListAPI getGenreListAPI() {
+        return genreListAPI;
     }
 }

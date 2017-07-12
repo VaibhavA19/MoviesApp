@@ -6,9 +6,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.example.itcontroller.movies.APIs.API
 import com.example.itcontroller.movies.R
-import com.example.itcontroller.movies.StringUtils
+import com.example.itcontroller.movies.Utils.StringUtils
 import com.example.itcontroller.movies.adapters.MovieAdapter
 import com.example.itcontroller.movies.interfaces.OnItemClickListener
 import com.example.itcontroller.movies.models.Movie
@@ -41,20 +42,31 @@ class MoviesViewActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MovieResult?>?, response: Response<MovieResult?>?) {
                 movieAdapter.updateMovieList(response!!.body()!!.results)
             }
+
             override fun onFailure(call: Call<MovieResult?>?, t: Throwable?) {
+                movie_pb.visibility = View.INVISIBLE
+                Toast.makeText(this@MoviesViewActivity, "Download Failed", Toast.LENGTH_LONG).show()
                 Log.d("aaa", "Download Failed")
             }
         }
 
         when (MOVIE_TYPE) {
-            StringUtils.NOW_PLAYING ->
+            StringUtils.NOW_PLAYING -> {
+                setTitle(StringUtils.NOW_PLAYING)
                 API.getAPIinstance().nowPlayingAPI.nowPlaying.enqueue(cBObject)
-            StringUtils.POPULAR ->
+            }
+            StringUtils.POPULAR -> {
+                setTitle(StringUtils.POPULAR)
                 API.getAPIinstance().popularMovieAPI.popularMovies.enqueue(cBObject)
-            StringUtils.TOP_RATED ->
+            }
+            StringUtils.TOP_RATED -> {
+                setTitle(StringUtils.TOP_RATED)
                 API.getAPIinstance().topRatedAPI.topRated.enqueue(cBObject)
-            StringUtils.UP_COMING ->
+            }
+            StringUtils.UP_COMING -> {
+                setTitle(StringUtils.UP_COMING)
                 API.getAPIinstance().upComingAPI.upComing.enqueue(cBObject)
+            }
         }
     }
 }

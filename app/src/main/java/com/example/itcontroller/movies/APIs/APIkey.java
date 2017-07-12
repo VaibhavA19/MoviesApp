@@ -1,5 +1,8 @@
 package com.example.itcontroller.movies.APIs;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by ITCONTROLLER on 7/7/2017.
  */

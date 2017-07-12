@@ -35,8 +35,17 @@
     <Button
         android:id="@+id/btnUpcoming"
         android:background="@android:color/background_light"
-        android:text="UPCOMONG"
+        android:text="UPCOMiNG"
         android:textSize="25sp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/btnDiscover"
+        android:background="@android:color/holo_orange_light"
+        android:text="Discover"
+        android:textSize="25sp"
+        style="@style/Base.TextAppearance.AppCompat.Widget.Button.Inverse"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>

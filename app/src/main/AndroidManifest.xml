@@ -14,13 +14,42 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MoviesViewActivity">
+
+        <activity
+            android:name=".activities.MoviesViewActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.itcontroller.movies.MainActivity" />
         </activity>
-        <activity android:name=".activities.ParticualrMovieActivity"></activity>
+
+        <activity
+            android:name=".activities.ParticualrMovieActivity"
+            android:parentActivityName=".activities.MoviesViewActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.itcontroller.movies.activities.MoviesViewActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.DiscoverMoviesActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.itcontroller.movies.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".activities.FilterActivity"
+            android:parentActivityName=".activities.DiscoverMoviesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.DiscoverMoviesActivity" />
+        </activity>
+
     </application>
 
 </manifest>

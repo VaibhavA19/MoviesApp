@@ -8,7 +8,7 @@ import android.widget.ProgressBar
 import com.example.itcontroller.movies.APIs.ImageBaseUrl
 import com.example.itcontroller.movies.interfaces.OnItemClickListener
 import com.example.itcontroller.movies.R
-import com.example.itcontroller.movies.VoteColorSelect
+import com.example.itcontroller.movies.Utils.VoteColorSelect
 import com.example.itcontroller.movies.models.Movie
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso

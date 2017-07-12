@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="DD/MM/YY"
+                    android:text="YYYY/MM/DD"
                     android:textSize="15sp" />
             </LinearLayout>
 
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="4dp"
-                android:text="abc , ghi , dcsi"
+                android:text=""
                 android:textSize="12sp" />
 
             <TextView
@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="Hindi"
+                android:text=""
                 android:textSize="12sp" />
         </LinearLayout>
 
